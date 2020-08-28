@@ -17,7 +17,7 @@
 #
 #
 #
-#
+# python app/main.py
 ############################################################################
 import os
 import json 
@@ -79,6 +79,7 @@ def get_user_activities(access_token, save_json=True):
     data = requests.get(url, headers=header, params=param)
     if save_json:
         with open('data/activities.json', 'w') as f:
+            print(f'Writing user activities to json...')
             json.dump(data.json(), f)
     return data
 
@@ -93,7 +94,7 @@ def get_route(access_token, activity_id, save_json=True):
     param = {'per_page': 200, 'page': 1}
     data = requests.get(url, headers=header, params=param)
     if save_json:
-        print(f'Writing activity {activity_id} to json...')
+        print(f'Writing activity stream {activity_id} to json...')
         with open(f'data/activity_streams/activity_stream_{activity_id}.json', 'w') as f:
             json.dump(data.json(), f)
     return data.json()
