@@ -25,5 +25,5 @@ Then, paste the code you get from the resulting url below:
 
 ```
 
-This will write all activity and stream data to `data/activity_data.csv`
+This will write all activity and stream data to `output/activity_data.csv` so that you can make a [dashboard of all your activities](https://public.tableau.com/profile/david.herook#!/vizhome/PandemicRuns/PandemicRuns)
 
