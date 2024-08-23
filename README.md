@@ -1,5 +1,5 @@
 # Pull Your Strava Data
-Use the Strava api to pull your activity data. 
+Use the Strava api to pull your activity data.
 
 ## How To
 
@@ -11,9 +11,16 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Find your Client ID from Strava here: https://www.strava.com/settings/api and use it to get your stats when you run the script:
+Find your Client ID from Strava here: https://www.strava.com/settings/api. Export the following variables to the environment:
 ```
-python main.py --client_id [Client ID]
+export STRAVA_CLIENT_SECRET=[Your client secret]
+export STRAVA_CLIENT_ID=[Your client id]
+```
+
+Then you can run:
+
+```
+python main.py
 ```
 
 You will be prompted to visit the authorization page. Copy and paste the link into your browser and click the authorize button which will pop up. Copy the `code` from the resulting url and paste it back into terminal:
