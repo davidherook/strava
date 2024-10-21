@@ -1,11 +1,14 @@
 """
 Writes a strava user's activity data to output/activity_data.csv for easier use
-e.g. {tableau link} # TODO
+e.g. https://public.tableau.com/app/profile/david.herook/viz/KiteTracks/Dashboard13
+
+Before running you must export the following env variables:
+export STRAVA_CLIENT_ID={your_strava_id}
+export STRAVA_CLIENT_SECRET={your_client_secret}
 """
 
 import os
 import json
-# import argparse
 import requests
 import pandas as pd
 from typing import List, Dict, Any, Optional
@@ -93,9 +96,6 @@ def get_new_activities(existing_ids: List[int], all_ids: List[int]) -> List[int]
 
 if __name__ == '__main__':
 
-    # parser = argparse.ArgumentParser()
-    # args = vars(parser.parse_args())
-
     url = f"http://www.strava.com/oauth/authorize?client_id={STRAVA_CLIENT_ID}&response_type=code&redirect_uri=http://localhost/exchange_token&approval_prompt=force&scope=profile:read_all,activity:read_all,read_all"
     code = input(f'To authorize, visit:\n{url}\nThen, paste the code you get from the resulting url below:\n')
     access_token = get_access_token(code)
@@ -159,3 +159,4 @@ if __name__ == '__main__':
     updated = pd.concat([df_historical, new_data])
     updated.to_csv(ACTIVITIES_CSV_PATH, index = False)
     print(f"Wrote updated activity routes to {ACTIVITIES_CSV_PATH}")
+    print(f"Shape of activities df = {updated.shape}")
